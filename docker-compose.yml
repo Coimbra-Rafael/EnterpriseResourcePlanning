@@ -1,0 +1,6 @@
+﻿services:
+  enterpriseresourceplanning.api:
+    image: enterpriseresourceplanning.api
+    build:
+      context: .
+      dockerfile: EnterpriseResourcePlanning.Api/Dockerfile
