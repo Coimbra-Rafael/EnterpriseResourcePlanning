@@ -5,6 +5,7 @@ namespace EnterpriseResourcePlanning.Api.Domain.Entities;
 public class Enterprise : IDisposable
 {
     public CustomizedGuid CustomerId { get; set; }
+    public Customer Customer { get; set; }
     public CustomizedGuid EnterpriseId { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -12,7 +13,7 @@ public class Enterprise : IDisposable
     public string StateRegistration { get; set; }
     public CustomizedGuid AddressId { get; set; }
     public Address Address { get; set; }
-    public Customer Customer { get; set; }
+    
 
     public Enterprise()
     {

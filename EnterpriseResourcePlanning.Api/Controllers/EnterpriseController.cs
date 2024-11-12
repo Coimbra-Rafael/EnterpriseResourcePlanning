@@ -19,22 +19,28 @@ public class EnterpriseController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Enterprise>>> Get([FromHeader] string customerId)
+    public async Task<ActionResult<IEnumerable<Enterprise>>> GetAllEnterprise([FromHeader] string customerId)
     {
-        return Ok(await _context.Enterprises.Where(e => e.CustomerId.Equals(CustomizedGuid.Parse(customerId)))
+        return Ok(await _context.Enterprises
+            .Where(e => e.CustomerId.Equals(CustomizedGuid.Parse(customerId)))
+            .Include(e => e.Customer)
+            .Include(e => e.Address)
             .ToListAsync());
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Enterprise>> Get([FromHeader] string id, [FromQuery] string customerId)
+    public async Task<ActionResult<Enterprise>> GetEnterpriseId(string id, [FromHeader] string customerId)
     {
         var enterprise = await _context.Enterprises.Where(e =>
                 e.CustomerId.Equals(CustomizedGuid.Parse(customerId)) &&
-                e.EnterpriseId.Equals(CustomizedGuid.Parse(id))).Include(e => e.Address)
+                e.EnterpriseId.Equals(CustomizedGuid.Parse(id)))
+            .Include(e => e.Customer)
+            .Include(e => e.Address)
             .FirstOrDefaultAsync();
 
         return Ok(enterprise);
     }
+
 
     [HttpPost]
     public async Task<ActionResult<Enterprise>> Post([FromHeader] string idCustomer,

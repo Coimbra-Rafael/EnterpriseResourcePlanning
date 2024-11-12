@@ -1,6 +1,8 @@
-﻿namespace EnterpriseResourcePlanning.Api.Applications.DTOs.Customer;
+﻿using EnterpriseResourcePlanning.Api.Applications.DTOs.Enterprise;
 
-public record CustomerDTO(string CustomerId, string Name, string Email, DateTime CreateOn, DateTime UpdateOn) : IDisposable
+namespace EnterpriseResourcePlanning.Api.Applications.DTOs.Customer;
+
+public record CustomerDTO(string CustomerId, string Name, string Email, DateTime CreateOn, DateTime UpdateOn,  IEnumerable<EnterpriseDTO> EnterpriseDto = null) : IDisposable
 {
     public void Dispose()
     {

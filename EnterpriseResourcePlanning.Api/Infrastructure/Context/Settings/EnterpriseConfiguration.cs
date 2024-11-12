@@ -34,10 +34,6 @@ public class EnterpriseConfiguration : IEntityTypeConfiguration<Enterprise>
         builder.Property(e => e.StateRegistration)
             .IsRequired()
             .HasMaxLength(20); // Ajuste conforme necessário
-
-        builder.HasOne(e => e.Customer)
-            .WithMany() // Ajuste se necessário
-            .HasForeignKey(e => e.CustomerId);
         
         builder.Property(e => e.AddressId)
             .IsRequired()

@@ -108,3 +108,8 @@ C:\Users\rcoim\RiderProjects\EnterpriseResourcePlanning\EnterpriseResourcePlanni
 C:\Users\rcoim\RiderProjects\EnterpriseResourcePlanning\EnterpriseResourcePlanning.Api\obj\Debug\net8.0\EnterpriseResourcePlanning.Api.pdb
 C:\Users\rcoim\RiderProjects\EnterpriseResourcePlanning\EnterpriseResourcePlanning.Api\obj\Debug\net8.0\EnterpriseResourcePlanning.Api.genruntimeconfig.cache
 C:\Users\rcoim\RiderProjects\EnterpriseResourcePlanning\EnterpriseResourcePlanning.Api\obj\Debug\net8.0\ref\EnterpriseResourcePlanning.Api.dll
+C:\Users\rcoim\RiderProjects\EnterpriseResourcePlanning\EnterpriseResourcePlanning.Api\obj\Debug\net8.0\EnterpriseResourcePlanning.Api.sourcelink.json
+C:\Users\rcoim\RiderProjects\EnterpriseResourcePlanning\EnterpriseResourcePlanning.Api\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\rcoim\RiderProjects\EnterpriseResourcePlanning\EnterpriseResourcePlanning.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\rcoim\RiderProjects\EnterpriseResourcePlanning\EnterpriseResourcePlanning.Api\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\rcoim\RiderProjects\EnterpriseResourcePlanning\EnterpriseResourcePlanning.Api\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

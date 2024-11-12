@@ -1,4 +1,5 @@
 ﻿using EnterpriseResourcePlanning.Api.Applications.DTOs.Customer;
+using EnterpriseResourcePlanning.Api.Applications.DTOs.Enterprise;
 using EnterpriseResourcePlanning.Api.Domain.Entities;
 using EnterpriseResourcePlanning.Api.Domain.Structs;
 using EnterpriseResourcePlanning.Api.Infrastructure.Context;
@@ -35,15 +36,37 @@ public class CustomerController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<CustomerDTO>> GetCustomer(string id)
     {
-
+        var idGuid = CustomizedGuid.Parse(id);
+        
         var customer = await _context.Customers
-            .Where(c => c.CustomerId.Equals(CustomizedGuid.Parse(id)))
-            .FirstOrDefaultAsync();
-        
-        var customerDTO = new CustomerDTO(customer.CustomerId.ToString(), customer.Name, customer.Email, customer.CreateOn, customer.UpdateOn);
-        
+            .Where(c => c.CustomerId.Equals(idGuid))
+            .Include(c => c.Enterprises)
+            .FirstOrDefaultAsync(c => c.CustomerId.Equals(idGuid));
+
+        if (customer == null)
+        {
+            return NotFound();
+        }
+
+        var enterprisesDTO = customer.Enterprises.Where(e => e.CustomerId.Equals(CustomizedGuid.Parse(id))).Select(enterprise => new EnterpriseDTO(
+            enterprise.FirstName,
+            enterprise.LastName,
+            enterprise.CnpjCpf,
+            enterprise.StateRegistration
+        )).ToList();
+
+        var customerDTO = new CustomerDTO(
+            CustomizedGuid.ParseCustomizedGuidToString(customer.CustomerId),
+            customer.Name,
+            customer.Email,
+            customer.CreateOn,
+            customer.UpdateOn,
+            enterprisesDTO
+        );
+
         return Ok(customerDTO);
     }
+
 
     [HttpPost]
     public async Task<ActionResult<Customer>> Post(CreateCustomerDTO createCustomerDto)
