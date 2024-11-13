@@ -21,11 +21,21 @@ public class CustomerController : ControllerBase
     [HttpGet] 
     public async Task<ActionResult<IEnumerable<CustomerDTO>>> Get()
     {
-        var customers = await _context.Customers.ToListAsync();
+        var customers = await _context.Customers.Include(c => c.Enterprises).ToListAsync();
         var customersDTO = new List<CustomerDTO>();
+        
+        
         foreach (var customer in customers)
         {
-                var customerDTO = new CustomerDTO(CustomizedGuid.ParseCustomizedGuidToString(customer.CustomerId), customer.Name, customer.Email, customer.CreateOn, customer.UpdateOn);
+            
+                var customerDTO = new CustomerDTO(CustomizedGuid.ParseCustomizedGuidToString(customer.CustomerId), customer.Name, customer.Email, customer.CreateOn, customer.UpdateOn,  customer.Enterprises.Where(e => e.CustomerId.Equals(customer.CustomerId)).Select(
+                    enterprise => new EnterpriseDTO(
+                        CustomizedGuid.ParseCustomizedGuidToString(enterprise.EnterpriseId),
+                        enterprise.FirstName,
+                        enterprise.LastName,
+                        enterprise.CnpjCpf,
+                        enterprise.StateRegistration
+                    )).ToList());
                 customersDTO.Add(customerDTO);
         }
 
@@ -48,7 +58,9 @@ public class CustomerController : ControllerBase
             return NotFound();
         }
 
-        var enterprisesDTO = customer.Enterprises.Where(e => e.CustomerId.Equals(CustomizedGuid.Parse(id))).Select(enterprise => new EnterpriseDTO(
+        var enterprisesDTO = customer.Enterprises.Where(e => e.CustomerId.Equals(CustomizedGuid.Parse(id))).Select(
+            enterprise => new EnterpriseDTO(
+                CustomizedGuid.ParseCustomizedGuidToString(enterprise.EnterpriseId),
             enterprise.FirstName,
             enterprise.LastName,
             enterprise.CnpjCpf,
