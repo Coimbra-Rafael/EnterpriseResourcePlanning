@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{41D2BB1D-30D1-4377-9277-E5B1E9F96E21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{D907325C-DD66-49EB-B379-B2FE0C3EBD41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{03D7B0C2-51E0-4322-A73C-11AF388AAAC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseResourcePlanning.Core", "src\Backend\Core\EnterpriseResourcePlanning.Core\EnterpriseResourcePlanning.Core.csproj", "{F964FC6C-F32C-4735-A102-109B0F5654FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F964FC6C-F32C-4735-A102-109B0F5654FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F964FC6C-F32C-4735-A102-109B0F5654FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F964FC6C-F32C-4735-A102-109B0F5654FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F964FC6C-F32C-4735-A102-109B0F5654FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D907325C-DD66-49EB-B379-B2FE0C3EBD41} = {41D2BB1D-30D1-4377-9277-E5B1E9F96E21}
+		{03D7B0C2-51E0-4322-A73C-11AF388AAAC3} = {D907325C-DD66-49EB-B379-B2FE0C3EBD41}
+		{F964FC6C-F32C-4735-A102-109B0F5654FD} = {03D7B0C2-51E0-4322-A73C-11AF388AAAC3}
+	EndGlobalSection
+EndGlobal
